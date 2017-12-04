@@ -299,6 +299,8 @@ def run_test_draw_lines_from_rectangles():
     rectangle1 = rg.Rectangle(rg.Point(870, 30), rg.Point(750, 100))
     rectangle2 = rg.Rectangle(rg.Point(700, 90), rg.Point(650, 60))
     rectangle2.outline_color = 'green'
+    rectangle1.attach_to(window1)
+    rectangle2.attach_to(window1)
     draw_lines_from_rectangles(rectangle1, rectangle2, 8, window1)
 
     window1.render()
@@ -327,6 +329,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     half_widths=abs(start.x-rectangle1.corner_2.x)
     line = rg.Line(start, end)
     line.thickness=4
+    line.color=rectangle1.outline_color
     line.attach_to(window)
     for k in range(n-1):
         start.x=start.x-half_widths
@@ -336,7 +339,10 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
         line=rg.Line(start,end)
         line.attach_to(window)
         line.thickness=4
-        if k%2
+        if k%2==0:
+            line.color=rectangle2.outline_color
+        else:
+            line.color=rectangle1.outline_color
     window.render()
 
 
