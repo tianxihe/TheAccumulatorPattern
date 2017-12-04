@@ -315,8 +315,10 @@ def run_test_draw_lines_from_rectangles():
     rectangle1.outline_color = 'brown'
     rectangle2.outline_color = 'cyan'
     rectangle2.outline_thickness = 10
+    rectangle1.attach_to(window2)
+    rectangle2.attach_to(window2)
     draw_lines_from_rectangles(rectangle1, rectangle2, 11, window2)
-
+    window2.render()
     window2.close_on_mouse_click()
 
 
